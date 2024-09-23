@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+
+        .options h6 {
+            margin: 0;
+        }
+
+        .cart-icon {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function addToCart() {
+            // Get the product details (price, name, etc.)
+            var productPrice = 20; // Update with the actual product price
+            var productName = "Delicious Pizza"; // Update with the actual product name
+
+            // Create an object to represent the product
+            var product = {
+                name: productName,
+                price: productPrice
+                // Add more properties as needed
+            };
+
+            // Check if the cart exists in localStorage
+            var cart = localStorage.getItem('cart');
+
+            if (!cart) {
+                // If the cart doesn't exist, create an empty array
+                cart = [];
+            } else {
+                // If the cart exists, parse it from JSON
+                cart = JSON.parse(cart);
+            }
+
+            // Add the product to the cart
+            cart.push(product);
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Optionally, you can redirect to the cart page or update the UI to show the product is added
+            alert('Product added to cart!');
+        }
+    </script>
+</head>
+<body>
+
+    <div class="options">
+        <h6>$10</h6>
+        <a href="#" class="cart-icon" onclick="addToCart()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="#000000">
+                <path d="M408 432H88a24 24 0 0 1-24-24V120a24 24 0 0 1 24-24h74.3l37.4-74.7A24 24 0 0 1 256 0h0a24 24 0 0 1 21.3 13.3L333.7 96h74.3a24 24 0 0 1 24 24v288a24 24 0 0 1-24 24zm-48-296l-37.4 74.7a24 24 0 0 1-21.3 13.3H193.7L160 136h128a24 24 0 0 1 21.3 13.3L360 136h0z"/>
+            </svg>
+        </a>
+    </div>
+
+</body>
+</html>
